@@ -1,1 +1,9 @@
-/test/fixtures/
+# Ignore documentation files that don't need strict linting
+CHANGES.md
+CONFIGURATION_EXAMPLE.md
+CUSTOM_REQUIREMENTS.md
+HUGO_FEATURES.md
+QUICK_START.md
+
+# Ignore test fixtures (they intentionally have broken links for testing)
+test/

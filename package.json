@@ -37,7 +37,7 @@
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "vfile-sort": "^4.0.0",
-    "xo": "^1.0.0"
+    "xo": "^0.60.0"
   },
   "exports": "./index.js",
   "files": [
@@ -52,6 +52,9 @@
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/unified"
+  },
+  "overrides": {
+    "@eslint/plugin-kit": ">=0.3.5"
   },
   "imports": {
     "#check-files": {
