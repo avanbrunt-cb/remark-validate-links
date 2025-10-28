@@ -10,12 +10,12 @@
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
     "wangshijun <wangshijun2010@gmail.com>"
   ],
-  "dependencies#": "hosted-git-info@8 is Node 18",
+  "dependencies#": "hosted-git-info@9 requires Node.js ^20.17.0 || >=22.9.0",
   "dependencies": {
     "@types/hosted-git-info": "^3.0.0",
     "@types/mdast": "^4.0.0",
     "github-slugger": "^2.0.0",
-    "hosted-git-info": "^7.0.0",
+    "hosted-git-info": "^9.0.0",
     "mdast-util-to-hast": "^13.0.0",
     "mdast-util-to-string": "^4.0.0",
     "propose": "0.0.5",
@@ -26,7 +26,7 @@
   },
   "description": "remark plugin to validate links to headings and files",
   "devDependencies": {
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.9.0",
     "c8": "^10.0.0",
     "prettier": "^3.0.0",
     "remark": "^15.0.0",
@@ -37,7 +37,7 @@
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "vfile-sort": "^4.0.0",
-    "xo": "^0.60.0"
+    "xo": "^1.0.0"
   },
   "exports": "./index.js",
   "files": [
@@ -46,6 +46,9 @@
     "index.js",
     "lib/"
   ],
+  "engines": {
+    "node": "^20.17.0 || >=22.9.0"
+  },
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/unified"
