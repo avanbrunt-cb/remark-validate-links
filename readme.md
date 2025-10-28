@@ -21,23 +21,35 @@ Not for say a website.
 
 ## Contents
 
-* [What is this?](#what-is-this)
-* [When should I use this?](#when-should-i-use-this)
-* [Install](#install)
-* [Use](#use)
-* [API](#api)
-  * [`unified().use(remarkValidateLinks[, options])`](#unifieduseremarkvalidatelinks-options)
-  * [`Options`](#options)
-  * [`UrlConfig`](#urlconfig)
-* [Examples](#examples)
-  * [Example: CLI](#example-cli)
-  * [Example: CLI in npm scripts](#example-cli-in-npm-scripts)
-* [Integration](#integration)
-* [Compatibility](#compatibility)
-* [Security](#security)
-* [Related](#related)
-* [Contribute](#contribute)
-* [License](#license)
+- [remark-validate-links](#remark-validate-links)
+  - [Contents](#contents)
+  - [What is this?](#what-is-this)
+  - [When should I use this?](#when-should-i-use-this)
+  - [Install](#install)
+  - [Use](#use)
+  - [API](#api)
+    - [`unified().use(remarkValidateLinks[, options])`](#unifieduseremarkvalidatelinks-options)
+          - [Parameters](#parameters)
+          - [Returns](#returns)
+    - [`Options`](#options)
+          - [Fields](#fields)
+    - [`HugoConfig`](#hugoconfig)
+          - [Fields](#fields-1)
+          - [Example](#example)
+    - [`BlogConfig`](#blogconfig)
+          - [Fields](#fields-2)
+    - [`UrlConfig`](#urlconfig)
+          - [Fields](#fields-3)
+          - [Notes](#notes)
+  - [Examples](#examples)
+    - [Example: CLI](#example-cli)
+    - [Example: CLI in npm scripts](#example-cli-in-npm-scripts)
+  - [Integration](#integration)
+  - [Compatibility](#compatibility)
+  - [Security](#security)
+  - [Related](#related)
+  - [Contribute](#contribute)
+  - [License](#license)
 
 ## What is this?
 
@@ -205,6 +217,83 @@ Configuration (TypeScript type).
   work automatically;
   otherwise,
   pass `urlConfig` manually
+* `hugoConfig`
+  ([`HugoConfig`][api-hugo-config], optional)
+  — configuration for Hugo static site generator support
+* `extraLandmarks`
+  (`Array<string>`, optional)
+  — additional landmarks that should be considered valid
+  (e.g., `['/blog', '/showcase']`)
+* `stripMarkdownExtensions`
+  (`boolean`, default: `false`)
+  — whether to strip `.md` extensions for extension-agnostic links
+* `normalizeTrailingSlash`
+  (`boolean`, default: `false`)
+  — whether to remove trailing slashes from paths
+
+### `HugoConfig`
+
+Configuration for Hugo static site generator (TypeScript type).
+
+###### Fields
+
+* `enabled`
+  (`boolean`, default: `false`)
+  — enable Hugo-specific features
+* `parseFrontmatterAliases`
+  (`boolean`, default: `false`)
+  — parse and validate Hugo aliases from YAML front matter
+* `contentDirectory`
+  (`string`, default: `'content'`)
+  — path to Hugo content directory relative to root
+* `blogConfig`
+  ([`BlogConfig`][api-blog-config], optional)
+  — configuration for blog post handling
+* `resourcePaths`
+  (`Array<string>`, optional)
+  — paths that should be treated as static resources (e.g., `['/resources/']`)
+
+###### Example
+
+```js
+{
+  hugoConfig: {
+    enabled: true,
+    parseFrontmatterAliases: true,
+    contentDirectory: 'content',
+    resourcePaths: ['/resources/'],
+    blogConfig: {
+      enabled: true,
+      directory: 'blog',
+      autoGenerateAliases: true,
+      dateInUrl: true,
+      compressMultipleDashes: true
+    }
+  }
+}
+```
+
+### `BlogConfig`
+
+Configuration for blog post URL handling (TypeScript type).
+
+###### Fields
+
+* `enabled`
+  (`boolean`, default: `false`)
+  — enable blog-specific features
+* `directory`
+  (`string`, default: `'blog'`)
+  — blog content directory relative to content directory
+* `autoGenerateAliases`
+  (`boolean`, default: `false`)
+  — auto-generate URL aliases from blog post titles
+* `dateInUrl`
+  (`boolean`, default: `false`)
+  — whether blog URLs include date prefixes like `/YYYY/MM/`
+* `compressMultipleDashes`
+  (`boolean`, default: `false`)
+  — compress multiple consecutive dashes in slugs
 
 ### `UrlConfig`
 
@@ -418,6 +507,10 @@ or community you agree to abide by its terms.
 [MIT][file-license] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
+
+[api-blog-config]: #blogconfig
+
+[api-hugo-config]: #hugoconfig
 
 [api-options]: #options
 

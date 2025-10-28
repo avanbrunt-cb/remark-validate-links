@@ -1,0 +1,35 @@
+{
+  "plugins": [
+    ["remark-validate-links", {
+      "repository": "https://github.com/your-org/your-repo",
+      "root": "./",
+      
+      "stripMarkdownExtensions": true,
+      "normalizeTrailingSlash": true,
+      
+      "extraLandmarks": [
+        "/blog",
+        "/showcase",
+        "/resources/query_overview.pdf",
+        "/resources/5.2-process-document.png",
+        "/resources/6.1-process-document.png"
+      ],
+      
+      "hugoConfig": {
+        "enabled": true,
+        "parseFrontmatterAliases": true,
+        "contentDirectory": "content",
+        "resourcePaths": ["/resources/"],
+        
+        "blogConfig": {
+          "enabled": true,
+          "directory": "blog",
+          "autoGenerateAliases": true,
+          "dateInUrl": true,
+          "compressMultipleDashes": true
+        }
+      }
+    }]
+  ]
+}
+
